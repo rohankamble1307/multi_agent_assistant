@@ -22,7 +22,7 @@ class RequestModel(BaseModel):
 def home():
     return {"message": "Multi-Agent Assistant is running 🚀"}
 
-@app.post("/ask")
+@app.post("/chat")
 def chat(request: RequestModel):
     response = route_request(request.message)
     return {"response": response}
