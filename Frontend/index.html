@@ -627,7 +627,6 @@
 </div>
 
 <script>
-  const API_URL = "https://multi-agent-assistant-8.onrender.com/chat";
   const messagesEl = document.getElementById("messages");
   const inputEl = document.getElementById("userInput");
   const sendBtn = document.getElementById("sendBtn");
@@ -639,12 +638,12 @@
   });
 
   // Enter to send, Shift+Enter for newline
-  inputEl.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
-  });
+ inputEl.addEventListener("keydown", function (e) {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+});
 
   function sendChip(el) {
     inputEl.value = el.textContent;
@@ -733,7 +732,7 @@
       const data = await res.json();
       removeTyping();
 
-     const reply = data.response || data.answer || data.result;
+     const reply = data.response;
 
    if (reply) {
     appendMessage("ai", reply);
