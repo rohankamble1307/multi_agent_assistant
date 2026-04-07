@@ -683,29 +683,37 @@ const sendBtn = document.getElementById("sendBtn");
     return msg;
   }
 
-  function showTyping() {
-    removeWelcome();
-    const msg = document.createElement("div");
-    msg.className = "msg ai";
-    msg.id = "typing";
+ function showTyping() {
+  if (document.getElementById("typing")) return;
 
-    const avatar = document.createElement("div");
-    avatar.className = "avatar ai";
-    avatar.textContent = "🤖";
+  removeWelcome();
 
-    const bubble = document.createElement("div");
-    bubble.className = "bubble";
+  const msg = document.createElement("div");
+  msg.className = "msg ai";
+  msg.id = "typing";
 
-    const typing = document.createElement("div");
-    typing.className = "typing-bubble";
-    typing.innerHTML = `<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>`;
+  const avatar = document.createElement("div");
+  avatar.className = "avatar ai";
+  avatar.textContent = "🤖";
 
-    bubble.appendChild(typing);
-    msg.appendChild(avatar);
-    msg.appendChild(bubble);
-    messagesEl.appendChild(msg);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-  }
+  const bubble = document.createElement("div");
+  bubble.className = "bubble";
+
+  const typing = document.createElement("div");
+  typing.className = "typing-bubble";
+  typing.innerHTML = `
+    <div class="typing-dot"></div>
+    <div class="typing-dot"></div>
+    <div class="typing-dot"></div>
+  `;
+
+  bubble.appendChild(typing);
+  msg.appendChild(avatar);
+  msg.appendChild(bubble);
+  messagesEl.appendChild(msg);
+
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
 
   function removeTyping() {
     const t = document.getElementById("typing");
