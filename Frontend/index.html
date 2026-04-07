@@ -625,11 +625,11 @@
     <div class="model-tag">⚡ gemini-2.0-flash</div>
   </div>
 </div>
-
 <script>
-  const messagesEl = document.getElementById("messages");
-  const inputEl = document.getElementById("userInput");
-  const sendBtn = document.getElementById("sendBtn");
+const API_URL = "https://multi-agent-assistant-7.onrender.com/chat";
+const messagesEl = document.getElementById("messages");
+const inputEl = document.getElementById("userInput");
+const sendBtn = document.getElementById("sendBtn");
 
   // Auto-resize textarea
   inputEl.addEventListener("input", () => {
@@ -723,11 +723,11 @@
     showTyping();
 
     try {
-      const res = await fetch("https://multi-agent-assistant-7.onrender.com/ask", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text })
-      });
+      const res = await fetch(API_URL, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ message: text })
+});
 
       const data = await res.json();
       removeTyping();
