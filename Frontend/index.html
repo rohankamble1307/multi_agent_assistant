@@ -5,7 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MultiAgent Assistant</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
+  <!-- Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDJYOzWu-rO2QUzk7eZJL4wfn6kJziTqx4",
+    authDomain: "multiagentassistant.firebaseapp.com",
+    projectId: "multiagentassistant",
+    appId: "1:702936419976:web:aa3d7dc90c890bbeef193d"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  window.googleLogin = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+    } catch(e) { console.error(e); }
+  };
+
+  window.googleLogout = async () => {
+    await signOut(auth);
+  };
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      document.getElementById("loginScreen").style.display = "none";
+      document.getElementById("chatScreen").style.display = "flex";
+      document.getElementById("userName").textContent = user.displayName;
+      document.getElementById("userPhoto").src = user.photoURL;
+      document.getElementById("userPhoto").style.display = "block";
+    } else {
+      document.getElementById("loginScreen").style.display = "flex";
+      document.getElementById("chatScreen").style.display = "none";
+    }
+  });
+</script>
+<style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -466,7 +505,14 @@
   </style>
 </head>
 <body>
-
+<!-- Login Screen -->
+<div id="loginScreen" style="position:fixed;inset:0;background:#0a0a0f;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;gap:20px;">
+  <div style="font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:#e8e8f0;">Multi<span style="color:#7c6aff;">Agent</span></div>
+  <p style="color:#6a6a85;font-family:'IBM Plex Mono',monospace;font-size:13px;">Login karo shuru karne ke liye</p>
+  <button onclick="googleLogin()" style="display:flex;align-items:center;gap:12px;padding:14px 28px;background:#fff;border:none;border-radius:12px;cursor:pointer;font-size:15px;font-weight:600;box-shadow:0 4px 20px rgba(124,106,255,0.3);">
+    <img src="https://www.google.com/favicon.ico" width="20"/> Google se Login karo
+  </button>
+</div>
 <div class="orb2"></div>
 
 <header>
@@ -478,8 +524,13 @@
     <div class="status-dot"></div>
     ONLINE · <gemini-2 class="5"></gemini-2>-Gemini 2.5 flash
   </div>
-</header>
-
+<div style="display:flex;align-items:center;gap:10px;">
+  <img id="userPhoto" src="" width="30" height="30" style="border-radius:50%;display:none"/>
+  <span id="userName" style="font-size:12px;color:#e8e8f0;font-family:'IBM Plex Mono',monospace;"></span>
+  <button onclick="googleLogout()" style="padding:6px 12px;background:transparent;border:1px solid #2a2a3a;border-radius:8px;color:#6a6a85;cursor:pointer;font-size:11px;">Logout</button>
+</div>
+</header> 
+<div id="chatScreen" style="display:none;flex-direction:column;flex:1;overflow:hidden;">
 <div id="messages">
   <div class="welcome" id="welcome">
     <div class="welcome-icon">
@@ -714,5 +765,6 @@
 // page load hote hi run ho
 setGreeting();
 </script>
+</div>
 </body>
 </html>
