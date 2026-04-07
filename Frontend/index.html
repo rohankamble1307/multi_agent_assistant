@@ -722,7 +722,9 @@ const sendBtn = document.getElementById("sendBtn");
     sendBtn.disabled = true;
     showTyping();
 
-  try {
+ showTyping();
+
+try {
   const res = await fetch(API_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -731,17 +733,16 @@ const sendBtn = document.getElementById("sendBtn");
 
   const data = await res.json();
 
-  const reply = data.response;
+  removeTyping();   // ✅ always BEFORE showing reply
 
-  if (reply) {
-    appendMessage("ai", reply);
-  } else {
-    appendMessage("ai", "No response received.", true);
-  }
+  const reply = data.response || data.answer || data.result;
+
+  appendMessage("ai", reply || "No response received.");
 
 } catch (err) {
-  console.error(err);
-  appendMessage("ai", "❌ Server se connect nahi ho paaya", true);
+  removeTyping();   // ✅ always remove typing on error
+
+  appendMessage("ai", "❌ Server error: " + err.message, true);
 }
 
     sendBtn.disabled = false;
