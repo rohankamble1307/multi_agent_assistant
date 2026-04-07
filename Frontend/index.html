@@ -724,7 +724,7 @@
     showTyping();
 
     try {
-      const res = await fetch("https://multi-agent-assistant-7.onrender.com/ask", {
+      const res = await fetch("https://multi-agent-assistant-7.onrender.com/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text })
@@ -733,10 +733,13 @@
       const data = await res.json();
       removeTyping();
 
-      if (data.response) {
-        appendMessage("ai", data.response);
-      } else {
-        appendMessage("ai", "Koi response nahi mila.", true);
+     const reply = data.response || data.answer || data.result;
+
+   if (reply) {
+    appendMessage("ai", reply);
+ } else {
+    appendMessage("ai", "No response received.", true);
+}
       }
     } catch (err) {
       removeTyping();
