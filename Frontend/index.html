@@ -722,28 +722,27 @@ const sendBtn = document.getElementById("sendBtn");
     sendBtn.disabled = true;
     showTyping();
 
-    try {
-      const res = await fetch(API_URL, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ message: text })
-});
+  try {
+  const res = await fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: text })
+  });
 
-      const data = await res.json();
-      removeTyping();
+  const data = await res.json();
 
-     const reply = data.response;
+  const reply = data.response;
 
-   if (reply) {
+  if (reply) {
     appendMessage("ai", reply);
- } else {
+  } else {
     appendMessage("ai", "No response received.", true);
+  }
+
+} catch (err) {
+  console.error(err);
+  appendMessage("ai", "❌ Server se connect nahi ho paaya", true);
 }
-      }
-    } catch (err) {
-      removeTyping();
-      appendMessage("ai", `❌ Server se connect nahi ho paya. Check karo ki backend chal raha hai.\n\n${err.message}`, true);
-    }
 
     sendBtn.disabled = false;
     inputEl.focus();
