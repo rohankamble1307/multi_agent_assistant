@@ -21,7 +21,7 @@ client = genai.Client(api_key=api_key)
 def handle_ai(user_input):
     try:
         response = client.models.generate_content(
-            model="models/gemini-2.5-flash",
+            model="models/gemini-1.5-flash",
             contents=user_input
         )
         return response.text
