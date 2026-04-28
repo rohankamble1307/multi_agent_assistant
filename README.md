@@ -85,7 +85,6 @@ The system simulates a real-world AI pipeline where different components collabo
 - Learned to build AI-powered applications using Google Cloud  
 - Worked on scalable and production-ready solutions  
 - Hands-on experience with Generative AI concepts
----
 
 📜 **Certificate:** [Click Here to View](./certificate.pdf)
 
