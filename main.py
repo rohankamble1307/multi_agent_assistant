@@ -26,3 +26,4 @@ def home():
 def chat(request: RequestModel):
     response = route_request(request.message)
     return {"response": response}
+
