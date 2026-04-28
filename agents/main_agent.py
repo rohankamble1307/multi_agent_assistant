@@ -1,5 +1,5 @@
 from agents.task_agent import handle_task
-from agents.ai_agent import handle_ai   # ✅ ye missing tha
+from agents.ai_agent import handle_ai   
 from agents.ai_agent import handle_ai
 def route_request(user_input):
     user_input_lower = user_input.lower()
@@ -12,7 +12,7 @@ def route_request(user_input):
     elif "show task" in user_input_lower or "list task" in user_input_lower:
         return handle_task(user_input_lower)
 
-    # 🟢 DELETE TASK (future ready 😎)
+    # 🟢 DELETE TASK 
     elif "delete task" in user_input_lower:
         return handle_task(user_input_lower)
 
