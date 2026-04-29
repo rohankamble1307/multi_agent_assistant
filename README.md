@@ -79,14 +79,27 @@ The system simulates a real-world AI pipeline where different components collabo
 * 📊 Better response formatting
 
 ---
-## 🎓 Certification
 
-✔️ **Google Cloud Gen AI Academy (APAC 2026)**  
-- Learned to build AI-powered applications using Google Cloud  
-- Worked on scalable and production-ready solutions  
-- Hands-on experience with Generative AI concepts
+## 🎓 Certification & Learning
 
-📜 **Certificate:** [Click Here to View](./certificate.pdf)
+I successfully completed the **Google Cloud Gen AI Academy (APAC 2026) - Cohort-1**, powered by Hack2Skill.
+
+This program provided hands-on experience in building **real-world, scalable AI-powered applications** using modern cloud infrastructure.
+
+### 🔍 Key Learnings:
+- Designing and implementing **Generative AI solutions**
+- Working with **cloud-based AI services (Google Cloud)**
+- Building **production-ready and scalable systems**
+- Understanding **multi-agent workflows and AI pipelines**
+
+### 🚀 How It Connects to This Project:
+The knowledge gained from this certification directly contributed to the development of this project:
+- Multi-Agent AI Architecture
+- Real-time AI response handling
+- Backend API integration using FastAPI
+- Deployment using modern cloud platforms
+
+📜 **Certificate:** [View Certificate](./certificate.pdf)
 
 ---
 
