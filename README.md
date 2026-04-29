@@ -82,7 +82,7 @@ The system simulates a real-world AI pipeline where different components collabo
 
 ## 🎓 Certification & Learning
 
-I successfully completed the **Google Cloud Gen AI Academy (APAC 2026) - Cohort-1**, powered by Hack2Skill.
+I successfully completed the **Google Cloud Gen AI Academy (APAC 2026) - Cohort 1**, powered by Hack2Skill.
 
 This program provided hands-on experience in building **real-world, scalable AI-powered applications** using modern cloud infrastructure.
 
