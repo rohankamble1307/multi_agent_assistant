@@ -11,13 +11,13 @@ api_key = os.getenv("GEMINI_API_KEY")
 
 print("DEBUG KEY:", api_key)
 
-# 🚨 Safety check
+#  Safety check
 if not api_key:
     raise ValueError("API key not loaded. Check .env file.")
 
 client = genai.Client(api_key=api_key)
 
-# ✅ MAKE SURE THIS FUNCTION EXISTS
+#  MAKE SURE THIS FUNCTION EXISTS
 def handle_ai(user_input):
     try:
         response = client.models.generate_content(
