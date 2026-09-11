@@ -9,7 +9,7 @@ def handle_task(user_input):
         cursor.execute("INSERT INTO tasks (task) VALUES (?)", (task,))
         conn.commit()
 
-        return f"✅ Task added: {task}"
+        return f" Task added: {task}"
 
     elif "show task" in user_input:
         cursor.execute("SELECT * FROM tasks")
@@ -20,4 +20,4 @@ def handle_task(user_input):
 
         return tasks
 
-    return "❌ Task command not understood"
+    return " Task command not understood"
